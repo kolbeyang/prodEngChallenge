@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import axios from 'axios'
 
 const App = () => {
 
-    const [questionContent, setQuestionContent] = useState('')
+    const [questionContent, setQuestionContent] = useState('What is the book about?')
 
     const handleChange = (event) => {
         setQuestionContent(event.target.value)
@@ -11,6 +12,13 @@ const App = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         console.log(questionContent)
+        axios.get('/api/v1/questions', {
+            params: {question: questionContent}
+        }).then( (response) => {
+            console.log(response.data)
+        }).catch( (error) => {
+            console.error(error)
+        })
     }
 
     return (
