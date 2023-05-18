@@ -4,6 +4,7 @@ import axios from 'axios'
 const App = () => {
 
     const [questionContent, setQuestionContent] = useState('What is the book about?')
+    const [answerContent, setAnswerContent] = useState(' ')
 
     const handleChange = (event) => {
         setQuestionContent(event.target.value)
@@ -16,6 +17,7 @@ const App = () => {
             params: {question: questionContent}
         }).then( (response) => {
             console.log(response.data)
+            setAnswerContent(response.data.answer)
         }).catch( (error) => {
             console.error(error)
         })
@@ -23,14 +25,14 @@ const App = () => {
 
     return (
         <>
-            <div>This is the App component</div>
+        <div>This is the App component</div>
             <form onSubmit={handleSubmit}>
                 <label>Ask a question about my book!
                     <input type="text" value={questionContent} onChange={handleChange}/>
                 </label>
-                <p>Question Content {questionContent}</p>
                 <button type="submit">Ask!</button>
             </form>
+            <p>AnswerContent {answerContent}</p>
         </>
     )
 }

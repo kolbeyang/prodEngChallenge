@@ -44,6 +44,8 @@ gem "bootsnap", require: false
 
 gem "webpacker"
 
+gem 'openai'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

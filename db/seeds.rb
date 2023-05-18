@@ -5,3 +5,17 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+
+questions = Question.create([
+    {
+        question: 'Test Question?',
+        answer: 'Test Answer!',
+        ask_count: 1
+    },
+    {
+        question: 'Does this work yet?',
+        answer: 'I hope so!',
+        ask_count: 1
+    }
+])
