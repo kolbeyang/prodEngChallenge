@@ -13,3 +13,37 @@
  *= require_tree .
  *= require_self
  */
+.wrapper {
+    width: 100vw;
+    max-width: 400px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title-label {
+    font-size: 4 rem;
+    width: 100%;
+    text-align: center;
+}
+
+.main-button {
+    background-color: rgb(244, 224, 76);
+    border-style: none;
+    font-size: 2.5 rem;
+    width: 100%;
+}
+
+.question-input {
+    background: rgb(224, 224, 224);
+    border-style: none;
+    width: 100%;
+}
+
+.question-input:focus {
+    background: white;
+}
+
+.response {
+    width: 100%;
+}

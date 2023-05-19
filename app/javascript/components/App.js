@@ -24,16 +24,14 @@ const App = () => {
     }
 
     return (
-        <>
-        <div>This is the App component</div>
+        <div className="wrapper">
             <form onSubmit={handleSubmit}>
-                <label>Ask a question about my book!
-                    <input type="text" value={questionContent} onChange={handleChange}/>
-                </label>
-                <button type="submit">Ask!</button>
+                <div className="title-label">Ask a question about my book! </div>
+                <input className="question-input" type="text" value={questionContent} onChange={handleChange}/>
+                <button className="main-button" type="submit">Ask!</button>
             </form>
-            <p>AnswerContent {answerContent}</p>
-        </>
+            <div className="response">AnswerContent {answerContent}</div>
+        </div>
     )
 }
 
