@@ -37,4 +37,5 @@
 yarn-debug.log*
 .yarn-integrity
 
-token.env
+/.env
+/.csv
