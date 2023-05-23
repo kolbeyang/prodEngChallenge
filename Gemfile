@@ -55,6 +55,8 @@ gem 'daru'
 
 gem 'csv'
 
+gem 'matrix'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
