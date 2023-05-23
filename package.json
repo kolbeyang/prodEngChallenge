@@ -8,6 +8,7 @@
   "license": "",
   "private": true,
   "dependencies": {
+    "@rails/webpacker": "5.2.1",
     "react":"^18.2.0",
     "axios":"^1.4.0",
     "antd":"^5.5.1",
