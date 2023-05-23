@@ -39,4 +39,4 @@ yarn-debug.log*
 
 token.env
 *.env
-*.csv
+# *.csv
