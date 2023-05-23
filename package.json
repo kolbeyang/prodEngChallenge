@@ -8,8 +8,7 @@
   "license": "",
   "private": true,
   "scripts": {
-    "webpack:deploy": "webpack --config=webpack/webpack.config.js -p",
-    "heroku-postbuild": "npm run webpack:deploy"
+    "webpack:deploy": "webpack --config=webpack/webpack.config.js -p"
   },
   
   "dependencies": {
