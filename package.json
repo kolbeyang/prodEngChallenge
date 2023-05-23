@@ -10,7 +10,6 @@
   "scripts": {
     "webpack:deploy": "webpack --config=webpack/webpack.config.js -p"
   },
-  
   "dependencies": {
     "@rails/webpacker": "5.4.4",
     "antd": "^5.5.1",
