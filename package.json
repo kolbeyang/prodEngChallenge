@@ -8,13 +8,13 @@
   "license": "",
   "private": true,
   "dependencies": {
-    "@rails/webpacker": "5.2.1",
+    "@rails/webpacker": "6.0.0",
     "react":"^18.2.0",
     "axios":"^1.4.0",
     "antd":"^5.5.1",
     "react-dom":"^18.2.0",
     "webpack":"^5.83.1",
-    "webpack-cli": "^3.3.12"
+    "webpack-cli": "^5.1.1"
   },
   "devDependencies": {
     "webpack-dev-server":"^4.15.0"
