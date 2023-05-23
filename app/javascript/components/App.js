@@ -1,17 +1,24 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Button, Space, Form, Input, Typography } from 'antd'
+const {Title} = Typography
+
+// const layout = {
+//     labelCol: { span: 8 },
+//     wrapperCol: { span: 16 },
+//   };
+  
 
 const App = () => {
 
-    const [questionContent, setQuestionContent] = useState('What is the book about?')
-    const [answerContent, setAnswerContent] = useState(' ')
+    const [questionContent, setQuestionContent] = useState('What is the main idea?')
+    const [answerContent, setAnswerContent] = useState('')
 
     const handleChange = (event) => {
         setQuestionContent(event.target.value)
     }
 
     const handleSubmit = (event) => {
-        event.preventDefault()
         console.log(questionContent)
         axios.get('/api/v1/questions', {
             params: {question: questionContent}
@@ -24,14 +31,25 @@ const App = () => {
     }
 
     return (
-        <div className="wrapper">
-            <form onSubmit={handleSubmit}>
-                <div className="title-label">Ask a question about my book! </div>
-                <input className="question-input" type="text" value={questionContent} onChange={handleChange}/>
-                <button className="main-button" type="submit">Ask!</button>
-            </form>
-            <div className="response">AnswerContent {answerContent}</div>
-        </div>
+        <Space className="wrapper">
+            <Title level={2} className="main-title">Ask my book!</Title>
+            <Form
+                layout="vertical"
+                name="nest-messages"
+                onFinish={handleSubmit}
+                // style={{ width: '100%' }}
+                // validateMessages={validateMessages}
+            >
+                <Form.Item className="question">
+                    <Input rows={4} value={questionContent} onChange={handleChange} style={{width:'100%'}} className="question-input"/>
+                </Form.Item>
+                <Button type="primary" htmlType="submit" className="main-button">Ask!</Button>
+            </Form>
+            {answerContent !== "" && <Space className="answer-container">
+                <Title level={4} className="answer-label">Answer</Title>
+                <Title level={5} className="answer-content">{answerContent}</Title>
+            </Space>}
+        </Space>
     )
 }
 

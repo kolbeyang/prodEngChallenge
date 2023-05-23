@@ -21,29 +21,43 @@
     margin-right: auto;
 }
 
-.title-label {
-    font-size: 4 rem;
-    width: 100%;
+.main-title {
     text-align: center;
 }
 
 .main-button {
-    background-color: rgb(244, 224, 76);
+    /* background-color: rgb(244, 224, 76);
     border-style: none;
-    font-size: 2.5 rem;
+    font-size: 2.5 rem; */
     width: 100%;
 }
 
 .question-input {
-    background: rgb(224, 224, 224);
-    border-style: none;
     width: 100%;
-}
-
-.question-input:focus {
-    background: white;
+    max-width: 100%;
 }
 
 .response {
     width: 100%;
+}
+
+.answer-container {
+    background-color: #eeeeee;
+    overflow: auto;
+    display: block;
+    box-sizing: border-box;
+    padding: 18px;
+    width: 100%;
+    max-height: 75vh;
+    margin-top: 40px;
+    border-radius: 5px;
+}
+
+.answer-label {
+    color: #444444 !important;
+    margin-top: 0px;
+}
+
+.answer-content {
+    color: #666666 !important;
 }

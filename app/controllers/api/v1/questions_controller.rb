@@ -8,8 +8,9 @@ module Api
             @@MAX_TOKENS = 150
             @@TEMPERATURE = 0.0
             @@MODEL = "text-davinci-003"
-            @@EMBEDDINGS_FILENAME = "Decindep.pdf.embeddings.csv"
-            @@PAGES_FILENAME = "Decindep.pdf.pages.csv"
+            @@PDF_FILENAME = "book.pdf"
+            @@EMBEDDINGS_FILENAME = @@PDF_FILENAME + ".embeddings.csv"
+            @@PAGES_FILENAME = @@PDF_FILENAME + ".pages.csv"
             @@QUERY_EMBEDDINGS_MODEL = "text-search-curie-query-001"
             @@DOC_EMBEDDINGS_MODEL = "text-search-curie-doc-001"
             @@SEPARATOR = "\n* "
@@ -93,7 +94,7 @@ module Api
                     chosen_sections_len += document_section["tokens"] + @@SEPARATOR_LENGTH
                     if chosen_sections_len > @@MAX_SECTION_LENGTH
                         space_left = @@MAX_SECTION_LENGTH - chosen_sections_len - @@SEPARATOR_LENGTH
-                        chosen_sections << @@SEPARATOR + document_section["content"][0..(document_section["tokens"] + space_left)]
+                        chosen_sections << @@SEPARATOR + document_section["content"].split()[0..(document_section["tokens"] + space_left)].join(" ")
                         break
                     end
 
