@@ -1,5 +1,6 @@
 task before_assets_precompile: :environment do
-    system('yarn')
+    puts "Running yarn..."
+    system('yarn run')
   end
   
   # every time you execute 'rake assets:precompile'
