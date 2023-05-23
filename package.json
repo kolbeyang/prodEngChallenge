@@ -1,0 +1,16 @@
+{
+  "name": "prod-eng-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": "",
+  "author": "Kolbe Yang",
+  "license": "",
+  "private": true,
+  "dependencies": {
+    "react":"^18.2.0",
+    "axios":"^1.4.0",
+    "antd":"^5.5.1",
+    "react-dom":"^18.2.0"
+  }
+}
