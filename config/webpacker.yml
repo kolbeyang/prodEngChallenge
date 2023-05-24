@@ -87,7 +87,7 @@ production:
   compile: false
 
   # Extract and emit a css file
-  extract_css: true
+  extract_css: false # to fix errors on Heroku?
 
   # Cache manifest.json for performance
   cache_manifest: true
