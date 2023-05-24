@@ -11,6 +11,8 @@
     "webpack:deploy": "webpack --config=webpack/webpack.config.js -p"
   },
   "dependencies": {
+    "@babel/core": "^7.21.8",
+    "@babel/preset-env": "^7.21.5",
     "@rails/webpacker": "5.4.4",
     "antd": "^5.5.1",
     "axios": "^1.4.0",
