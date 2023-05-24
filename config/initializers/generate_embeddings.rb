@@ -31,7 +31,7 @@ end
 def pdfMigrate(filename)
     # check to see if the files already exists 
     if File.exist?(filename + ".embeddings.csv") && File.exist?(filename + ".pages.csv") 
-        puts "Embeddings and Pagges CSV files already exist, no need to generate them again"
+        puts "Embeddings and Pages CSV files already exist, no need to generate them again"
         return
     end
 
