@@ -112,7 +112,7 @@ module Api
                         break
                     end
 
-                    chosen_sections << SEPARATOR + document_section["content"]
+                    chosen_sections << @@SEPARATOR + document_section["content"]
 
                 end
 
