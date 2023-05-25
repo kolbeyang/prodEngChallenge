@@ -38,6 +38,8 @@ def pdfMigrate(filename)
         return
     end
 
+    Question.delete_all
+
     res = []
     i = 1 # page counter
     tokenizer = Tokenizers.from_pretrained("gpt2")
