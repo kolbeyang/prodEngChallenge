@@ -17,12 +17,19 @@ module Api
             @@SEPARATOR_LENGTH = 3
             @@MAX_SECTION_LENGTH = 500
 
+            # Load in the API token
             def initialize(*)
                 token  = ENV['OPENAI']
                 @client = OpenAI::Client.new(access_token: token)
             end
 
+            # Load in the embeddings file as a dataframe
+            # return a hash, title -> (array that represents the embedding)
             def load_embeddings(filename)
+                if not(File.exist?(filename))
+                    puts "File " + filename + " doesn't exist."
+                    return
+                end
                 df = Daru::DataFrame.from_csv(filename)
                 columns = df.vectors
                 max_dim = columns.to_a[-1].to_i
@@ -38,6 +45,7 @@ module Api
                 return output
             end
 
+            # Get the embedding for text based on the given model
             def get_embedding(question, model)
                 result =  @client.embeddings(
                     parameters: {
@@ -48,14 +56,17 @@ module Api
                 return result["data"][0]["embedding"]
             end
 
+            # Get the embedding for text based on the doc embeddings model
             def get_doc_embedding(question)
                 return get_embedding(question, @@DOC_EMBEDDINGS_MODEL)
             end
 
+            # Get the embedding for text based on the query embeddings model
             def get_query_embedding(question)
                 return get_embedding(question, @@QUERY_EMBEDDINGS_MODEL)
             end
 
+            # Quantify vector similarity using dot product
             def vector_similarity(in1, in2)
                 sum = 0.0
                 x = in1.to_a
@@ -68,12 +79,15 @@ module Api
                 return sum
             end
 
+            # Return an array of doc embeddings sorted by similarity to the query
             def order_document_sections(question, content_embeddings)
                 query_embedding = get_query_embedding(question)
                 ordered_by_similarity = content_embeddings.sort_by{ |k, doc_embedding| -vector_similarity(query_embedding, doc_embedding) }
                 return ordered_by_similarity
             end
 
+            # Builds a prompt using the user question and context from the most relevant sections
+            # of the document. The prompt will include up to MAX_SECTION_LENGTH tokens from the document.
             def construct_prompt(question, content_embeddings, df)
                 most_relevant_sections = order_document_sections(question, content_embeddings)
 
@@ -109,6 +123,7 @@ module Api
                 return prompt
             end
 
+            # The question doesn't exist, hit OpenAI for an answer.
             def ask(questionContent)
                 embeddings_file_path = @@EMBEDDINGS_FILENAME
                 content_embeddings = load_embeddings(embeddings_file_path)
@@ -131,6 +146,9 @@ module Api
                 return answer
             end
 
+            # Handle incoming request. 
+            # If the question has been asked already, return the generated response.
+            # Otherwise, ask OpenAI for a response via ask()
             def index
                 questionContent = params[:question]
                 questions = Question.all

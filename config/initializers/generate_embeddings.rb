@@ -28,6 +28,9 @@ def get_embedding(content, client)
     return result["data"][0]["embedding"]
 end
 
+# If the embeddings and pages files do not exist for the given filename, generate them
+# Put each page into a row in the pages file
+# Put each page's embedding into the embeddings file
 def pdfMigrate(filename)
     # check to see if the files already exists 
     if File.exist?(filename + ".embeddings.csv") && File.exist?(filename + ".pages.csv") 
