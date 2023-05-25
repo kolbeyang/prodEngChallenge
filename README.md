@@ -15,7 +15,7 @@ OPENAI = 'your api key'
 
 ### Chose a PDF
 
-Right now book.pdf is a pdf of the Declaration of Independence.
+Right now book.pdf is a pdf of the Meditations of Marcus Aurelius.
 
 If you would like this app to answer questions about another pdf, replace book.pdf with another file named book.pdf. Delete book.pdf.embeddings.csv and book.pdf.pages.csv. Next the app initializes it will regenerate those two files based on the new pdf.
 
